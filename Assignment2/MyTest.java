@@ -22,7 +22,7 @@ public class MyTest {
 		System.out.println("Original Contact");
 		System.out.println(c1.toString());
 		System.out.println("------------------------\n");
-		System.out.println("Coppied Contract");
+		System.out.println("Copied Contract");
 		System.out.println(c2.toString());
 		System.out.println("-----------------------\n");
 		System.out.println("Original Contact");
