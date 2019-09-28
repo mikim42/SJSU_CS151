@@ -11,7 +11,7 @@ public class MyTest {
 			c3 = c1.clone();
 		}
 		catch (CloneNotSupportedException ex){
-			System.out.println("There was a problem with coppying the contract");
+			System.out.println("There was a problem with copying the contract");
 		}
 		c3.setPlan(20);
 		c3.setMonth(24);
