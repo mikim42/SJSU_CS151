@@ -44,7 +44,7 @@ public Contract clone() throws CloneNotSupportedException {
 	//makes a copy of the object (contract only) and returns a object type and therefore we need to cast it. 
 	//it does not copy the object. So therefore, we need to do it and add it to the contract
 	c1.setSmartphone((Mobile)smartphone.clone());// when we copy the contract object, the mobile object does not get coppied. 
-	//so the smartphone in c1 will stay the same, the object. not a copy. So we copy the object Mobile and then we add it 
+	//so the smartphone in c1 will stay the same, the object.not a copy. So we copy the object Mobile and then we add it 
 	//to the c1 contract. 
 	return c1;
 
