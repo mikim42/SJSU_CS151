@@ -72,7 +72,7 @@ public class DrawingFrame extends JFrame {
 		clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				drawingCanvas.clearShapes();
-				canvasEditor.setCurrentShape(null, null);
+				canvasEditor.setCurrentShape(null, statusTextField);
 				statusTextField.setText("Canvas Cleared");
 			}
 		});
@@ -81,7 +81,7 @@ public class DrawingFrame extends JFrame {
 		ellipse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				canvasEditor.setCurrentShape(new Ellipse(0, 0, 120, 60, fill),
-				new JTextField("Ellipse"));
+				statusTextField);
 				statusTextField.setText("Ellipse Selected");
 			}
 		});
@@ -90,7 +90,7 @@ public class DrawingFrame extends JFrame {
 		circle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				canvasEditor.setCurrentShape(new Circle(0, 0, 90, 90, fill),
-				new JTextField("Circle"));
+				statusTextField);
 				statusTextField.setText("Circle Selected");
 			}
 		});
@@ -99,7 +99,7 @@ public class DrawingFrame extends JFrame {
 		rect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				canvasEditor.setCurrentShape(new Rect(0, 0, 120, 60, fill),
-				new JTextField("Rectangle"));
+				statusTextField);
 				statusTextField.setText("Rectangle Selected");
 			}
 		});
@@ -108,17 +108,12 @@ public class DrawingFrame extends JFrame {
 		square.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				canvasEditor.setCurrentShape(new Square(0, 0, 90, 90, fill),
-				new JTextField("Square"));
+				statusTextField);
 				statusTextField.setText("Square Selected");
 			}
 		});
 		
-		try {
 		drawingCanvas.addMouseListener(canvasEditor);
-		}
-		catch (Exception e) {
-			System.out.println(e);
-		}
 		return toolStatusPanel;
 	}
 }

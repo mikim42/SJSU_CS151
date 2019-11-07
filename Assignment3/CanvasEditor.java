@@ -27,13 +27,16 @@ public class CanvasEditor implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (currentShape == null)
+		if (currentShape == null) {
+			statusText.setText("Please Select Shape");
 			return;
+		}
 		Shape newShape = (Shape)currentShape.clone();
 
 		newShape.setCenter(e.getX(), e.getY());
 		DrawingCanvas drawingCanvas = (DrawingCanvas)e.getSource();
 		drawingCanvas.addShape(newShape);
+		statusText.setText(currentShape.getClass().getName() + " Drawn");
 	}
 	
 	@Override
