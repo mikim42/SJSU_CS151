@@ -10,7 +10,7 @@ public class ItemAdderPanel extends JFrame{
 	public ItemAdderPanel(Item item, ShoppingCart Cart) {
 		this.item = item;
 		this.setTitle("Adding " + item.getName());
-		
+		ItemAdderPanel f = this;
 		JButton add = new JButton("Add");
 		JButton cancel = new JButton("Cancel");
 		Dimension buttonSize = new Dimension(100,30);
@@ -22,7 +22,12 @@ public class ItemAdderPanel extends JFrame{
 			}
 		});
 		cancel.setPreferredSize(buttonSize);
-		
+		cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			   f.dispose();
+
+			}
+		});
 		JPanel buttons = new JPanel();
 		buttons.add(add);
 		buttons.add(cancel);
