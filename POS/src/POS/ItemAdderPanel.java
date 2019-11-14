@@ -1,6 +1,8 @@
 package POS;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,16 +36,44 @@ public class ItemAdderPanel extends JFrame{
 		this.add(buttons, BorderLayout.SOUTH);
 		
 		JPanel editor = new JPanel();
-		editor.setBackground(Color.red);
-		editor.setPreferredSize(new Dimension(400,300));
+		editor.setBackground(Color.LIGHT_GRAY);
+		editor.setPreferredSize(new Dimension(500,300));
 		JButton qDecrease = new JButton("-");
+		qDecrease.setPreferredSize(new Dimension(50,30));
 		editor.add(qDecrease);
 		JTextField quantity = new JTextField();
+		quantity.setPreferredSize(new Dimension(70,20));
+		quantity.setHorizontalAlignment(JTextField.CENTER);
 		quantity.setText(item.getQuantity()+"");
 		editor.add(quantity);
 		JButton qIncrease = new JButton("+");
+		qIncrease.setPreferredSize(new Dimension(50,30));
 		editor.add(qIncrease);
+		JTextArea note = new JTextArea("Notes:");
+		note.setPreferredSize(new Dimension(400, 200));
+		editor.add(note, BorderLayout.SOUTH);
 		this.add(editor, BorderLayout.CENTER);
+		
+		
+		qIncrease.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int count = Integer.valueOf((quantity.getText()));
+				count +=1;
+				quantity.setText(String.valueOf(count));
+			}
+		});
+		qDecrease.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int count = Integer.valueOf((quantity.getText()));
+				if (count>1) {
+					count -=1;	
+				}
+				else {
+					count = 0;
+				}
+				quantity.setText(String.valueOf(count));
+			}
+		});
 		
 		
 		

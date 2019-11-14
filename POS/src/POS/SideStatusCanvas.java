@@ -19,4 +19,8 @@ public class SideStatusCanvas extends JPanel{
 		
 		this.add(checkoutPanel, BorderLayout.SOUTH);
 		}
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawString("This is a test", getX(), getY());
+	}
 }

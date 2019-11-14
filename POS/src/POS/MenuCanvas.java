@@ -42,7 +42,9 @@ public class MenuCanvas extends JPanel{
 		});
 		pastrami.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ItemAdderButtons panel1 = new ItemAdderButtons(pastramii, cart);
+				ItemAdderPanel panel1 = new ItemAdderPanel(pastramii, cart);
+				panel1.pack();
+				panel1.setVisible(true);
 			}
 		});
 		
