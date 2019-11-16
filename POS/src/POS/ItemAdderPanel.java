@@ -8,28 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ItemAdderPanel extends JFrame{
-	private Item item;
-	public ItemAdderPanel(Item item, ShoppingCart Cart) {
-		this.item = item;
+	
+	public ItemAdderPanel(SideStatusCanvas checkout, Item item, ShoppingCart Cart) {
 		this.setTitle("Adding " + item.getName());
 		ItemAdderPanel f = this;
 		JButton add = new JButton("Add");
 		JButton cancel = new JButton("Cancel");
 		Dimension buttonSize = new Dimension(100,30);
-		
-		add.setPreferredSize(buttonSize);
-		add.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("hello");
-			}
-		});
-		cancel.setPreferredSize(buttonSize);
-		cancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			   f.dispose();
-
-			}
-		});
 		JPanel buttons = new JPanel();
 		buttons.add(add);
 		buttons.add(cancel);
@@ -44,7 +29,7 @@ public class ItemAdderPanel extends JFrame{
 		JTextField quantity = new JTextField();
 		quantity.setPreferredSize(new Dimension(70,20));
 		quantity.setHorizontalAlignment(JTextField.CENTER);
-		quantity.setText(item.getQuantity()+"");
+		quantity.setText(0+"");
 		editor.add(quantity);
 		JButton qIncrease = new JButton("+");
 		qIncrease.setPreferredSize(new Dimension(50,30));
@@ -53,7 +38,28 @@ public class ItemAdderPanel extends JFrame{
 		note.setPreferredSize(new Dimension(400, 200));
 		editor.add(note, BorderLayout.SOUTH);
 		this.add(editor, BorderLayout.CENTER);
+		add.setPreferredSize(buttonSize);
+		cancel.setPreferredSize(buttonSize);
+
 		
+		add.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Item newItem = (Item)item.clone();
+
+				newItem.setQuantity(Integer.valueOf(quantity.getText()));
+				newItem.setNote(note.getText());
+				if (newItem.getQuantity()!=0) {
+					Cart.addItem(newItem);
+					checkout.addItem();				
+				}
+			}
+		});
+		cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			   f.dispose();
+
+			}
+		});
 		
 		qIncrease.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

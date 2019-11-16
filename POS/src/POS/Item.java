@@ -1,18 +1,27 @@
 package POS;
 
-public class Item {
+public class Item implements Cloneable{
 	private String name;
 	private double price;
 	private int quantity;
+	private String note;
 	
 	public Item(String name, double d) {
 		this.name = name;
 		this.price = d;
 	}
-	public Item(String name, double price, int quantity) {
+	/*public Item(String name, double price, int quantity, String note) {
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
+		this.note = note;
+		
+	}*/
+	public void setNote(String note) {
+		this.note = note;
+	}
+	public String getNote() {
+		return this.note;
 	}
 	public double getPrice() {
 		return price;
@@ -32,5 +41,13 @@ public class Item {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public Object clone() {
+		try {
+			return super.clone();
+		}
+		catch(CloneNotSupportedException e){
+			return null;
+			
+		}
+	}
 }

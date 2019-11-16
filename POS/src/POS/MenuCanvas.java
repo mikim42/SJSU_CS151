@@ -30,10 +30,11 @@ public class MenuCanvas extends JPanel{
 		JButton pastrami = new JButton("Pastrami");
 		pastrami.setPreferredSize(menuButtonSize);
 		menuPanel.add(pastrami);
-
 		Item pastramii = new Item("pastrami", 2.99);
 		Items = new MenuItems();
 		Items.addItem(pastramii);
+		SideStatusCanvas sideStatusCanvas = new SideStatusCanvas(cart);
+		this.add(sideStatusCanvas, BorderLayout.EAST);
 		editMenu.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -42,7 +43,7 @@ public class MenuCanvas extends JPanel{
 		});
 		pastrami.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ItemAdderPanel panel1 = new ItemAdderPanel(pastramii, cart);
+				ItemAdderPanel panel1 = new ItemAdderPanel(sideStatusCanvas, pastramii, cart);
 				panel1.pack();
 				panel1.setVisible(true);
 			}

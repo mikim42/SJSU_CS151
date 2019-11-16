@@ -2,7 +2,8 @@ package POS;
 import javax.swing.*;
 public class Main {
 	public static void main(String[] args) {
-		JFrame window = new AppFrame();
+		ShoppingCart cart = new ShoppingCart();
+		JFrame window = new AppFrame(cart);
 		window.pack();
 		window.setVisible(true);
 	}
