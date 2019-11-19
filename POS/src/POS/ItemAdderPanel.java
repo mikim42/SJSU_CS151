@@ -50,7 +50,8 @@ public class ItemAdderPanel extends JFrame{
 				newItem.setNote(note.getText());
 				if (newItem.getQuantity()!=0) {
 					Cart.addItem(newItem);
-					checkout.addItem();				
+					checkout.addItem();
+					f.dispose();				
 				}
 			}
 		});
