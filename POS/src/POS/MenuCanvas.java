@@ -22,21 +22,23 @@ public class MenuCanvas extends JPanel{
 		navpanel.setPreferredSize(new Dimension(750,30));
 		this.add(navpanel, BorderLayout.NORTH);
 
-		JButton editMenu = new JButton ("EDIT MENU");
+		JButton editMenu = new JButton("EDIT MENU");
 		editMenu.setPreferredSize(new Dimension(150,20));
 		navpanel.setLayout(new BorderLayout());
 		navpanel.add(editMenu, BorderLayout.WEST);
 		
+		// Display menu items
 		JButton pastrami = new JButton("Pastrami");
 		pastrami.setPreferredSize(menuButtonSize);
 		menuPanel.add(pastrami);
 		Item pastramii = new Item("pastrami", 2.99);
 		Items = new MenuItems();
 		Items.addItem(pastramii);
+		//
+		
 		SideStatusCanvas sideStatusCanvas = new SideStatusCanvas(cart);
 		this.add(sideStatusCanvas, BorderLayout.EAST);
 		editMenu.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
 				MenuCanvasEditor Editor = new MenuCanvasEditor(Items);
 			}
