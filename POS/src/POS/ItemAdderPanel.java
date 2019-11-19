@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class ItemAdderPanel extends JFrame{
 	
 	public ItemAdderPanel(SideStatusCanvas checkout, Item item, ShoppingCart Cart) {
+		JFrame frame = this;
 		this.setTitle("Adding " + item.getName());
 		ItemAdderPanel f = this;
 		JButton add = new JButton("Add");
@@ -34,7 +35,7 @@ public class ItemAdderPanel extends JFrame{
 		JButton qIncrease = new JButton("+");
 		qIncrease.setPreferredSize(new Dimension(50,30));
 		editor.add(qIncrease);
-		JTextArea note = new JTextArea("Notes:");
+		JTextArea note = new JTextArea("Notes");
 		note.setPreferredSize(new Dimension(400, 200));
 		editor.add(note, BorderLayout.SOUTH);
 		this.add(editor, BorderLayout.CENTER);
@@ -50,7 +51,9 @@ public class ItemAdderPanel extends JFrame{
 				newItem.setNote(note.getText());
 				if (newItem.getQuantity()!=0) {
 					Cart.addItem(newItem);
-					checkout.addItem();				
+					checkout.addItem();	
+					frame.dispose();
+					
 				}
 			}
 		});

@@ -34,12 +34,18 @@ public class SideStatusCanvas extends JPanel{
 	}
 	 public void addItem() {
 		if (cart.getItems().size()!=0){
-		Dimension buttonSize = new Dimension(200,100);
+		Dimension buttonSize = new Dimension(240,100);
 
 		System.out.println(cart.getItems());
 		Item item = this.cart.getLastItem();
-		JButton button = new JButton(item.getQuantity()+"x  "+ item.getName() + "   " + "$"+item.getQuantity()*item.getPrice()+"\n"+item.getNote());
-		button.setPreferredSize(buttonSize);
+		JButton button = new JButton();
+		button.setLayout(new BorderLayout());
+		JLabel des = new JLabel(item.getQuantity()+"x  "+ item.getName() + "   " + "$"+item.getQuantity()*item.getPrice());
+		JLabel note = new JLabel((item.getNote()));
+		button.add(des, BorderLayout.NORTH);
+		button.add(note, BorderLayout.AFTER_LAST_LINE);
+		button.setMinimumSize(buttonSize);
+		button.setMargin(new Insets(10,10,10,10));
 		box.add(button);
 		cartPanel.add(box);
 		this.revalidate();
