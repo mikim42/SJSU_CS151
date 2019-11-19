@@ -33,6 +33,7 @@ public class MenuCanvas extends JPanel{
 		Item pastramii = new Item("pastrami", 2.99);
 		Items = new MenuItems();
 		Items.addItem(pastramii);
+		Items.updateDB();
 		SideStatusCanvas sideStatusCanvas = new SideStatusCanvas(cart);
 		this.add(sideStatusCanvas, BorderLayout.EAST);
 		editMenu.addActionListener(new ActionListener() {

@@ -21,7 +21,9 @@ public class MenuItems implements Iterable<Item> {
 				items.add(newItem);
 			}
 		}
-		catch (Exception e) {}
+		catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	public void addItem(Item newItem) {
@@ -48,7 +50,9 @@ public class MenuItems implements Iterable<Item> {
 			}
 			writer.close();
 		}
-		catch (Exception e) {}
+		catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	@Override

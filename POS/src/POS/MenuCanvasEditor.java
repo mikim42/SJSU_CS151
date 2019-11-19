@@ -1,6 +1,9 @@
 package POS;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.*;
 
 public class MenuCanvasEditor extends JFrame{
@@ -79,7 +82,7 @@ public class MenuCanvasEditor extends JFrame{
 		
 		/*
 		** menuListPanel
-		
+		*/
 		menuListPanel.setPreferredSize(new Dimension(250, 500));
 		menuListPanel.setBackground(Color.white);
 		menuListPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -95,7 +98,7 @@ public class MenuCanvasEditor extends JFrame{
 			}
 		});
 		menuListPanel.add(menuList);
-		*/
+		
 	}
 	
 }
