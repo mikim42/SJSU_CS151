@@ -13,6 +13,6 @@ public class AppFrame extends JFrame{
 		menuCanvas = new MenuCanvas(cart);
 		this.add(menuCanvas, BorderLayout.CENTER);
 		
-		
+		System.out.println(("hello"));
 		}
 }
