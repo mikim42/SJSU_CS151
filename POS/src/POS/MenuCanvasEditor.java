@@ -1,20 +1,23 @@
 package POS;
 
 import javax.swing.*;
+import java.util.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import java.awt.*;
+import java.awt.event.*;
 
 public class MenuCanvasEditor extends JFrame{
 		JPanel menuListPanel;
 		JPanel menuDetailPanel;
 		JPanel toolBarPanel;
+		MenuItems items;
 	
-	public MenuCanvasEditor(MenuItems Items) {
+	public MenuCanvasEditor(MenuItems items) {
 		menuListPanel = new JPanel();
 		menuDetailPanel = new JPanel();
 		toolBarPanel = new JPanel();
+		this.items = items;
 		
 		getEditmenuPanel();
 		
@@ -27,6 +30,7 @@ public class MenuCanvasEditor extends JFrame{
 	}
 	
 	private void getEditmenuPanel() {
+		MenuCanvasEditor currWindow = this;
 		menuListPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
 		menuDetailPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
 		toolBarPanel = new JPanel();	
@@ -75,6 +79,12 @@ public class MenuCanvasEditor extends JFrame{
 		delButton.setPreferredSize(new Dimension(150, 20));
 		closeButton.setPreferredSize(new Dimension(150, 20));
 		
+		closeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currWindow.dispose();
+			}
+		});
+		
 		toolBarPanel.setBackground(Color.gray);
 		toolBarPanel.add(addButton);
 		toolBarPanel.add(delButton);
@@ -88,17 +98,61 @@ public class MenuCanvasEditor extends JFrame{
 		menuListPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 		// Parse Items here
-		String itemList[] = {"item 1", "item 2", "item 3"};
-		JList menuList = new JList(itemList);
+		DefaultListModel listModel = new DefaultListModel();
+		Iterator<Item> it = items.iterator();
+		while (it.hasNext()) {
+			listModel.addElement(it.next().getName());
+		}
+		JList menuList = new JList(listModel);
 		//
 		menuList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-				itemName.setText((String)menuList.getSelectedValue());
-				itemPrice.setText("3.99");
+				String selectedItem = (String)menuList.getSelectedValue();
+				if (selectedItem == null)
+					return ;
+				Item item = items.findItem(selectedItem);
+				itemName.setText(item.getName());
+				itemPrice.setText(Double.toString(item.getPrice()));
 			}
 		});
 		menuListPanel.add(menuList);
 		
+		addButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = itemName.getText();
+				String price = itemPrice.getText();
+				
+				if (name.isEmpty() || price.isEmpty())
+					return ;
+				
+				items.addItem(new Item(name, Double.parseDouble(price)));
+				listModel.addElement(name);
+				items.updateDB();
+				menuList.repaint();
+			}
+		});
+		delButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selectedItem = (String)menuList.getSelectedValue();
+				if (selectedItem == null)
+					return ;
+				items.deleteItem(items.findItem(selectedItem));
+				listModel.removeElement(selectedItem);
+				items.updateDB();
+				menuList.repaint();
+			}
+		});
+		applyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selectedItem = (String)menuList.getSelectedValue();
+				if (selectedItem == null)
+					return ;
+				items.modifyItem(selectedItem,
+					itemName.getText(),
+					Double.parseDouble(itemPrice.getText()));
+				items.updateDB();
+				menuList.repaint();
+			}
+		});
 	}
-	
 }

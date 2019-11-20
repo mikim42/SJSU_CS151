@@ -27,21 +27,13 @@ public class MenuCanvas extends JPanel{
 		navpanel.setLayout(new BorderLayout());
 		navpanel.add(editMenu, BorderLayout.WEST);
 		
+		Items = new MenuItems();
+		/*
 		JButton pastrami = new JButton("Pastrami");
 		pastrami.setPreferredSize(menuButtonSize);
 		menuPanel.add(pastrami);
 		Item pastramii = new Item("pastrami", 2.99);
-		Items = new MenuItems();
 		Items.addItem(pastramii);
-		Items.updateDB();
-		SideStatusCanvas sideStatusCanvas = new SideStatusCanvas(cart);
-		this.add(sideStatusCanvas, BorderLayout.EAST);
-		editMenu.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				MenuCanvasEditor Editor = new MenuCanvasEditor(Items);
-			}
-		});
 		pastrami.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ItemAdderPanel panel1 = new ItemAdderPanel(sideStatusCanvas, pastramii, cart);
@@ -49,6 +41,13 @@ public class MenuCanvas extends JPanel{
 				panel1.setVisible(true);
 			}
 		});
-		
+		*/
+		SideStatusCanvas sideStatusCanvas = new SideStatusCanvas(cart);
+		this.add(sideStatusCanvas, BorderLayout.EAST);
+		editMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuCanvasEditor Editor = new MenuCanvasEditor(Items);
+			}
+		});
 	}
 }

@@ -12,7 +12,5 @@ public class AppFrame extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		menuCanvas = new MenuCanvas(cart);
 		this.add(menuCanvas, BorderLayout.CENTER);
-		
-		System.out.println(("hello"));
-		}
+	}
 }

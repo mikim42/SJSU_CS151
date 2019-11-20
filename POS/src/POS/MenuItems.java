@@ -34,8 +34,25 @@ public class MenuItems implements Iterable<Item> {
 		items.remove(item);
 	}
 	
-	public void modifyItem(Item item, double price) {
-
+	public void modifyItem(String item, String name, double price) {
+		Iterator<Item> it = items.iterator();
+		while (it.hasNext()) {
+			Item tmp = it.next();
+			if (tmp.getName().equals(name)) {
+				tmp.setName(name);
+				tmp.setPrice(price);
+			}
+		}
+	}
+	
+	public Item findItem(String name) {
+		Iterator<Item> it = items.iterator();
+		while (it.hasNext()) {
+			Item tmp = it.next();
+			if (tmp.getName().equals(name))
+				return tmp;
+		}
+		return null;
 	}
 	
 	public void updateDB() {

@@ -51,7 +51,7 @@ public class ItemAdderPanel extends JFrame{
 				if (newItem.getQuantity()!=0) {
 					Cart.addItem(newItem);
 					checkout.addItem();
-					f.dispose();				
+					f.dispose();	
 				}
 			}
 		});
