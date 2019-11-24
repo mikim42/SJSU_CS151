@@ -1,13 +1,19 @@
 package POS;
 
 import java.io.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MenuItems implements Iterable<Item> {
-	private ArrayList<Item> items;
-	public MenuItems() {
+	static ArrayList<Item> items;
+	private MenuCanvas menuCanvas;
+	
+	public MenuItems(MenuCanvas mc) {
 		items = new ArrayList<Item>();
+		menuCanvas = mc;
 		/*
 		** Read database
 		*/
@@ -20,6 +26,7 @@ public class MenuItems implements Iterable<Item> {
 				Item newItem = new Item(split[0], Double.parseDouble(split[1]));
 				items.add(newItem);
 			}
+			drawMenuButton();
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -63,9 +70,9 @@ public class MenuItems implements Iterable<Item> {
 			while (it.hasNext()) {
 				Item tmp = it.next();
 				writer.write(tmp.getName() + " " + tmp.getPrice() + "\n");
-				System.out.println(tmp.getName() + " " + tmp.getPrice());
 			}
 			writer.close();
+			drawMenuButton();
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -77,5 +84,25 @@ public class MenuItems implements Iterable<Item> {
 		return items.iterator();
 	}
 	
-
+	private void drawMenuButton() {
+		menuCanvas.getMenuPanel().removeAll();
+		menuCanvas.getMenuPanel().revalidate();
+		for (Item it : items) {
+			JButton newButton = new JButton(it.getName());
+			newButton.setPreferredSize(new Dimension(150,70));
+			menuCanvas.getMenuPanel().add(newButton);
+			Item newItem = new Item(it.getName(), it.getPrice());
+			newButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ItemAdderPanel adderPanel = new ItemAdderPanel(
+						menuCanvas.getSideStatusCanvas(), newItem,
+						menuCanvas.getCart());
+					adderPanel.pack();
+					adderPanel.setVisible(true);
+					menuCanvas.getMenuPanel().repaint();
+				}
+			});
+			menuCanvas.getMenuPanel().repaint();
+		}
+	}
 }

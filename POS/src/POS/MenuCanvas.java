@@ -2,18 +2,29 @@ package POS;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
 public class MenuCanvas extends JPanel{
 	private MenuItems Items;
+	private JPanel menuPanel;
+	private SideStatusCanvas sideStatusCanvas;
+	private ShoppingCart cart;
+	private BufferedImage image;
+	private MenuCanvas menuCanvas;
 	
 	public MenuCanvas(ShoppingCart cart) {
-		Dimension menuButtonSize = new Dimension(150,70);
-		this.setPreferredSize(new Dimension(750,300)) ;
+		this.menuCanvas = this;
+	
+		this.setPreferredSize(new Dimension(900,800)) ;
 		this.setBackground(Color.blue);
 		this.setLayout(new BorderLayout());
 		
-		JPanel menuPanel = new JPanel();
+		menuPanel = new JPanel();
 		menuPanel.setPreferredSize(new Dimension(750,270));
 		menuPanel.setBackground(Color.blue);
 		this.add(menuPanel, BorderLayout.CENTER);
@@ -26,28 +37,27 @@ public class MenuCanvas extends JPanel{
 		editMenu.setPreferredSize(new Dimension(150,20));
 		navpanel.setLayout(new BorderLayout());
 		navpanel.add(editMenu, BorderLayout.WEST);
+		editMenu.setPreferredSize(new Dimension(150,20));
+		navpanel.setLayout(new BorderLayout());
+		navpanel.add(editMenu, BorderLayout.WEST);
+		Items = new MenuItems(menuCanvas);
 		
-		Items = new MenuItems();
-		/*
-		JButton pastrami = new JButton("Pastrami");
-		pastrami.setPreferredSize(menuButtonSize);
-		menuPanel.add(pastrami);
-		Item pastramii = new Item("pastrami", 2.99);
-		Items.addItem(pastramii);
-		pastrami.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ItemAdderPanel panel1 = new ItemAdderPanel(sideStatusCanvas, pastramii, cart);
-				panel1.pack();
-				panel1.setVisible(true);
-			}
-		});
-		*/
-		SideStatusCanvas sideStatusCanvas = new SideStatusCanvas(cart);
+		sideStatusCanvas = new SideStatusCanvas(cart);
 		this.add(sideStatusCanvas, BorderLayout.EAST);
 		editMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuCanvasEditor Editor = new MenuCanvasEditor(Items);
 			}
 		});
+	}
+	
+	public JPanel getMenuPanel() {
+		return menuPanel;
+	}
+	public SideStatusCanvas getSideStatusCanvas() {
+		return sideStatusCanvas;
+	}
+	public ShoppingCart getCart() {
+		return cart;
 	}
 }

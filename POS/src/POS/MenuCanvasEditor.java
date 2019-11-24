@@ -8,11 +8,12 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MenuCanvasEditor extends JFrame{
-		JPanel menuListPanel;
-		JPanel menuDetailPanel;
-		JPanel toolBarPanel;
-		MenuItems items;
-	
+		private JPanel menuListPanel;
+		private JPanel menuDetailPanel;
+		private JPanel toolBarPanel;
+		private MenuItems items;
+		private Dimension menuButtonSize = new Dimension(150,70);
+		
 	public MenuCanvasEditor(MenuItems items) {
 		menuListPanel = new JPanel();
 		menuDetailPanel = new JPanel();
@@ -122,10 +123,11 @@ public class MenuCanvasEditor extends JFrame{
 				String name = itemName.getText();
 				String price = itemPrice.getText();
 				
-				if (name.isEmpty() || price.isEmpty())
+				if (name.isEmpty() || price.isEmpty() ||
+					items.findItem(name) != null)
 					return ;
-				
-				items.addItem(new Item(name, Double.parseDouble(price)));
+				Item newitem = new Item(name, Double.parseDouble(price));
+				items.addItem(newitem);
 				listModel.addElement(name);
 				items.updateDB();
 				menuList.repaint();

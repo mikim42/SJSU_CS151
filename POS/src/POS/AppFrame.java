@@ -6,8 +6,9 @@ import javax.swing.*;
 
 public class AppFrame extends JFrame{
 	private MenuCanvas menuCanvas;
+	ShoppingCart cart = new ShoppingCart();
 	
-	public AppFrame(ShoppingCart cart) {
+	public AppFrame() {
 		this.setTitle("POBest");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		menuCanvas = new MenuCanvas(cart);

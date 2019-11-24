@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 public class ItemAdderPanel extends JFrame{
 	
+	
 	public ItemAdderPanel(SideStatusCanvas checkout, Item item, ShoppingCart Cart) {
 		this.setTitle("Adding " + item.getName());
 		ItemAdderPanel f = this;
@@ -49,9 +50,12 @@ public class ItemAdderPanel extends JFrame{
 				newItem.setQuantity(Integer.valueOf(quantity.getText()));
 				newItem.setNote(note.getText());
 				if (newItem.getQuantity()!=0) {
+					
 					Cart.addItem(newItem);
 					checkout.addItem();
 					f.dispose();	
+					
+					
 				}
 			}
 		});

@@ -21,4 +21,12 @@ public class ShoppingCart {
 		return cart.get(cart.size()-1);
 	 
 	}
+	
+	public ArrayList<Item> getCart(){
+		
+		return this.cart;
+		
+	}
+
+
 }

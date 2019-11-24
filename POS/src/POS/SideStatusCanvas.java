@@ -1,5 +1,7 @@
 package POS;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -7,6 +9,8 @@ public class SideStatusCanvas extends JPanel{
 	private ShoppingCart cart;
 	private JPanel checkoutPanel;
 	private JPanel cartPanel;
+	private JPanel checkOutBox;
+	private static double total;
 	Box box = Box.createVerticalBox();
 
 	ArrayList<JButton> buttons = new ArrayList<>();
@@ -31,6 +35,12 @@ public class SideStatusCanvas extends JPanel{
 		cartPanel.setBackground(Color.white);
 		this.add(cartPanel, BorderLayout.NORTH);
 		
+		checkoutbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheckoutPanel Editor = new CheckoutPanel();
+			}
+		});
+		
 	}
 	public void addItem() {
 		if (cart.getItems().size()!=0){
@@ -38,9 +48,11 @@ public class SideStatusCanvas extends JPanel{
 
 		System.out.println(cart.getItems());
 		Item item = this.cart.getLastItem();
+		
 		JButton button = new JButton();
 		button.setLayout(new BorderLayout());
 		JLabel des = new JLabel(item.getQuantity()+"x  "+ item.getName() + "   " + "$"+item.getQuantity()*item.getPrice());
+		total += item.getQuantity() * item.getPrice();
 		JLabel note = new JLabel((item.getNote()));
 		button.add(des, BorderLayout.NORTH);
 		button.add(note, BorderLayout.AFTER_LAST_LINE);
@@ -52,6 +64,10 @@ public class SideStatusCanvas extends JPanel{
 		this.repaint();
 		}
 		}
+	
+	public static double getTotal() {
+		return  total;
+	}
 }
 		
 	
