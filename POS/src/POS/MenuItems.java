@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MenuItems implements Iterable<Item> {
-	static ArrayList<Item> items;
+	private ArrayList<Item> items;
 	private MenuCanvas menuCanvas;
 	
 	public MenuItems(MenuCanvas mc) {

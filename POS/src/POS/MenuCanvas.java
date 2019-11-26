@@ -14,11 +14,11 @@ public class MenuCanvas extends JPanel{
 	private JPanel menuPanel;
 	private SideStatusCanvas sideStatusCanvas;
 	private ShoppingCart cart;
-	private BufferedImage image;
 	private MenuCanvas menuCanvas;
 	
 	public MenuCanvas(ShoppingCart cart) {
 		this.menuCanvas = this;
+		this.cart = cart;
 	
 		this.setPreferredSize(new Dimension(900,800)) ;
 		this.setBackground(Color.blue);

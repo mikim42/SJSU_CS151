@@ -69,13 +69,13 @@ public class CheckoutPanel extends JFrame{
         cash.setPreferredSize(menuButtonSize);
         JButton card = new JButton("Credit Card");
         card.setPreferredSize(menuButtonSize);
-        JButton bitcoin = new JButton("Bitcoin");
-        bitcoin.setPreferredSize(menuButtonSize);
+        JButton close = new JButton("Close");
+        close.setPreferredSize(menuButtonSize);
         
         
         toolbarPanel.add(cash);
         toolbarPanel.add(card);
-        toolbarPanel.add(bitcoin);
+        toolbarPanel.add(close);
         
         cash.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -92,13 +92,22 @@ public class CheckoutPanel extends JFrame{
         	}
        
         });
-        bitcoin.addActionListener(new ActionListener() {
+       /* bitcoin.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
         	TextField.setText(TextField.getText() + "\n\n\n\nThank you for stopping by! See you again soon!");
         	}
        
-        });
+        });  */
+        
+           close.addActionListener(new ActionListener() {
+        	   
+        	   public void actionPerformed(ActionEvent e) {
+        		   
+        		   currWindow.dispose();
+        	   }
+           });
+        
 		
 	}
 }

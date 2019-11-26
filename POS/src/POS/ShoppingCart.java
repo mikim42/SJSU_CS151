@@ -9,6 +9,7 @@ public class ShoppingCart {
 		cart = new ArrayList<Item>();
 	}
 	public void addItem(Item item) {
+		
 		if (item.getQuantity()!=0){
 			cart.add(item);
 		}
