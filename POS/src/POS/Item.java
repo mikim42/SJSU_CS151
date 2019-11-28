@@ -5,10 +5,12 @@ public class Item implements Cloneable{
 	private double price;
 	private int quantity;
 	private String note;
+	private double id;
 	
 	public Item(String name, double d) {
 		this.name = name;
 		this.price = d;
+		id = 1 + Math.random();
 	}
 	/*public Item(String name, double price, int quantity, String note) {
 		this.name = name;
@@ -40,6 +42,12 @@ public class Item implements Cloneable{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public double getId() {
+		return this.id;
+	}
+	public void setId(double a) {
+		this.id = a;
 	}
 	public Object clone() {
 		try {

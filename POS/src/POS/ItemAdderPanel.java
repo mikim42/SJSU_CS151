@@ -46,7 +46,7 @@ public class ItemAdderPanel extends JFrame{
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Item newItem = (Item)item.clone();
-
+				newItem.setId(Math.random());
 				newItem.setQuantity(Integer.valueOf(quantity.getText()));
 				newItem.setNote(note.getText());
 				

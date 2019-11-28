@@ -4,14 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.accessibility.AccessibleContext;
 import javax.swing.*;
 public class SideStatusCanvas extends JPanel{
-	private ShoppingCart cart;
+	private static ShoppingCart cart;
 	private JPanel checkoutPanel;
 	private JPanel cartPanel;
 	private JPanel checkOutBox;
 	private static double total;
-	Box box = Box.createVerticalBox();
 
 	ArrayList<JButton> buttons = new ArrayList<>();
 
@@ -38,11 +38,14 @@ public class SideStatusCanvas extends JPanel{
 		checkoutbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CheckoutPanel Editor = new CheckoutPanel();
+				Editor.pack();
+				Editor.setVisible(true);
 			}
 		});
 		
 	}
 	public void addItem() {
+		SideStatusCanvas s = this;
 		if (cart.getItems().size()!=0){
 		Dimension buttonSize = new Dimension(240,100);
 
@@ -52,21 +55,38 @@ public class SideStatusCanvas extends JPanel{
 		JButton button = new JButton();
 		button.setLayout(new BorderLayout());
 		JLabel des = new JLabel(item.getQuantity()+"x  "+ item.getName() + "   " + "$"+item.getQuantity()*item.getPrice());
-		total += item.getQuantity() * item.getPrice();
+		//total += item.getQuantity() * item.getPrice();
 		JLabel note = new JLabel((item.getNote()));
 		button.add(des, BorderLayout.NORTH);
 		button.add(note, BorderLayout.AFTER_LAST_LINE);
 		button.setMinimumSize(buttonSize);
 		button.setMargin(new Insets(10,10,10,10));
-		box.add(button);
-		cartPanel.add(box);
+		button.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				EditAddedItemFrame f = new EditAddedItemFrame(item, cart, s, button, cartPanel);
+				f.pack();
+				f.setVisible(true);
+			}
+			
+		});
+		cartPanel.add(button);
 		this.revalidate();
 		this.repaint();
 		}
 		}
 	
 	public static double getTotal() {
+		total = 0;
+		for (Item itemexample:cart.getCart()) {
+			System.out.println(itemexample.getName()+"  "+itemexample.getId()+ " " +itemexample.getQuantity());
+
+			total+=(itemexample.getPrice() * itemexample.getQuantity());
+			
+		}
+		System.out.println("-----------------------");
 		return  total;
+		
 	}
 }
 		

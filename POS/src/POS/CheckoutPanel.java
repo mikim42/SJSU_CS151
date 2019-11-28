@@ -13,17 +13,16 @@ public class CheckoutPanel extends JFrame{
 		
 	private JPanel toolbarPanel;	
 	private JTextArea TextField;
-		Dimension menuButtonSize = new Dimension(90, 35);
+	Dimension menuButtonSize = new Dimension(90, 35);
 	
 	
 	public CheckoutPanel() {
 		
-		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getCheckoutPanel();
 		
 		this.setTitle("Checkout Page");
-		this.pack();
-		this.setVisible(true);
+		
 		this.setPreferredSize(new Dimension(500,500));
 		
 		this.add(toolbarPanel, BorderLayout.SOUTH);
@@ -35,9 +34,6 @@ public class CheckoutPanel extends JFrame{
 		CheckoutPanel currWindow = this;
 		toolbarPanel = new JPanel();
 		toolbarPanel.setPreferredSize(new Dimension(500,40));
-		
-		currWindow.setPreferredSize(new Dimension(500,500));
-		currWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		currWindow.setLocation(100,100);
 	
 		double total = SideStatusCanvas.getTotal();

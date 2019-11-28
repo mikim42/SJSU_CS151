@@ -29,5 +29,11 @@ public class ShoppingCart {
 		
 	}
 
-
+	public void updateItem(Item item) {
+		for (Item item1:cart ) {
+			if (item1.getId()==item.getId()){
+				item1.setQuantity(item.getQuantity());
+			}
+		}
+	}
 }
