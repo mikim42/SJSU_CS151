@@ -28,7 +28,9 @@ public class ShoppingCart {
 		return this.cart;
 		
 	}
-
+	public void removeItem(Item item) {
+		cart.remove(item);
+	}
 	public void updateItem(Item item) {
 		for (Item item1:cart ) {
 			if (item1.getId()==item.getId()){

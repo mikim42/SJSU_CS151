@@ -28,7 +28,7 @@ public class ItemAdderPanel extends JFrame{
 		qDecrease.setPreferredSize(new Dimension(50,30));
 		editor.add(qDecrease);
 		JTextField quantity = new JTextField();
-		quantity.setPreferredSize(new Dimension(70,20));
+		quantity.setPreferredSize(new Dimension(80,30));
 		quantity.setHorizontalAlignment(JTextField.CENTER);
 		quantity.setText(0+"");
 		editor.add(quantity);
@@ -41,6 +41,9 @@ public class ItemAdderPanel extends JFrame{
 		this.add(editor, BorderLayout.CENTER);
 		add.setPreferredSize(buttonSize);
 		cancel.setPreferredSize(buttonSize);
+		Font font = new Font("Arial", 1, 20);
+		qDecrease.setFont(font);
+		qIncrease.setFont(font);
 
 		
 		add.addActionListener(new ActionListener() {
