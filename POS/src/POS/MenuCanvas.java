@@ -21,12 +21,12 @@ public class MenuCanvas extends JPanel{
 		this.cart = cart;
 	
 		this.setPreferredSize(new Dimension(900,800)) ;
-		this.setBackground(Color.blue);
+		this.setBackground(Color.decode("#2792DC"));
 		this.setLayout(new BorderLayout());
 		
 		menuPanel = new JPanel();
 		menuPanel.setPreferredSize(new Dimension(750,270));
-		menuPanel.setBackground(Color.blue);
+		menuPanel.setBackground(Color.decode("#2792DC"));
 		this.add(menuPanel, BorderLayout.CENTER);
 		
 		JPanel navpanel = new JPanel();

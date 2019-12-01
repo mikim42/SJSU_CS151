@@ -12,8 +12,12 @@ import java.math.MathContext;
 public class CheckoutPanel extends JFrame{
 		
 	private JPanel toolbarPanel;	
+	private JPanel tipsPanel;
 	private JTextArea TextField;
 	Dimension menuButtonSize = new Dimension(90, 35);
+	private JTextArea newText;
+	private double totall;
+	private double finall;
 	
 	
 	public CheckoutPanel() {
@@ -24,8 +28,9 @@ public class CheckoutPanel extends JFrame{
 		this.setTitle("Checkout Page");
 		
 		this.setPreferredSize(new Dimension(500,500));
-		
+		this.add(TextField,BorderLayout.NORTH);
 		this.add(toolbarPanel, BorderLayout.SOUTH);
+		this.add(tipsPanel,BorderLayout.CENTER);
 	
 	}
 	
@@ -35,7 +40,31 @@ public class CheckoutPanel extends JFrame{
 		toolbarPanel = new JPanel();
 		toolbarPanel.setPreferredSize(new Dimension(500,40));
 		currWindow.setLocation(100,100);
-	
+		
+		tipsPanel = new JPanel();
+		tipsPanel.setPreferredSize(new Dimension(500,40));
+		JLabel enter = new JLabel("Enter tips: ");
+		JButton fif = new JButton("15%");
+		JButton eig = new JButton("18%");
+		JButton twe = new JButton("20%");
+		JLabel custom = new JLabel("Custom");
+		JTextField customtip = new JTextField();
+		newText = new JTextArea();
+		customtip.setPreferredSize(menuButtonSize);
+		JButton entercustom = new JButton("Enter Custom tip");
+		
+		tipsPanel.add(enter);
+		tipsPanel.add(fif);
+		tipsPanel.add(eig);
+		tipsPanel.add(twe);
+		tipsPanel.add(custom);
+		tipsPanel.add(customtip);
+		tipsPanel.add(newText);
+		newText.setEditable(false);
+		
+		
+		
+		
 		double total = SideStatusCanvas.getTotal();
 		
 		double tax1 = total * 0.08;
@@ -43,23 +72,18 @@ public class CheckoutPanel extends JFrame{
 		bd = bd.round(new MathContext(4));
 		double tax = bd.doubleValue();
 		
-		double tips1 = total * 0.2;
-		BigDecimal bd2 = new BigDecimal(tips1);
-		bd2 = bd2.round(new MathContext(4));
-		double tips = bd2.doubleValue();
-		
-		double final1 = total + tax + tips;
+		double final1 = total + tax;
 		BigDecimal bd3 = new BigDecimal(final1);
 		bd3 = bd3.round(new MathContext(4));
-		double finall = bd3.doubleValue();
+		double finalwtax = bd3.doubleValue();
 		
-		TextField = new JTextArea("\n\n\n\n   Your Total is: $"+ total + "\n   Tax(8%): $" + tax + "\n   Tips(20%): $" + tips + 
-				"\n---------------------------------------------------------------\n    Final: $" + finall);
+		TextField = new JTextArea("\n\n\n\n   Your Total is: $"+ total + "\n   + Tax(8%): $" + tax + "\n "  
+				+"---------------------------------------------------------------\n    Final: $" + finalwtax);
 
 		TextField.setBounds(5, 5, 10, 20);
-        currWindow.add(TextField);
         TextField.setBackground(new Color(102,171,205));
-        TextField.setText(TextField.getText() + "\n \n \n \n \n  Please Choose A Payment Method Below: \n\n\n");
+        TextField.setText(TextField.getText() + "\n \n \n \n \n  Please Choose Tips amount below: \n\n\n");
+        TextField.setEditable(false);
         
         JButton cash = new JButton("Cash");
         cash.setPreferredSize(menuButtonSize);
@@ -68,23 +92,111 @@ public class CheckoutPanel extends JFrame{
         JButton close = new JButton("Close");
         close.setPreferredSize(menuButtonSize);
         
-        
+        toolbarPanel.add(entercustom);
         toolbarPanel.add(cash);
         toolbarPanel.add(card);
         toolbarPanel.add(close);
         
-        cash.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		
-        	TextField.setText(TextField.getText() + "\n\n\nThank you for stopping by! See you again soon!");
-        	}
-       
+        fif.addActionListener(new ActionListener() {
+     	   
+     	   public void actionPerformed(ActionEvent e) {
+     		   
+     		   totall = 0.15 * total + final1;
+     		   
+     		   
+     		   BigDecimal bd3 = new BigDecimal(totall);
+     		   bd3 = bd3.round(new MathContext(4));
+     		   finall = bd3.doubleValue();
+     		   
+     		   
+     		   newText.setText("\n\n\n Your Total is: $"+ finall + "\n Please choose a payment method from below:");
+     		  
+     	   }
         });
+        
+        eig.addActionListener(new ActionListener() {
+     	   
+     	   public void actionPerformed(ActionEvent e) {
+     		   
+     		  totall = 0.18 * total + final1;
+    		   
+    		   
+    		   BigDecimal bd3 = new BigDecimal(totall);
+    		   bd3 = bd3.round(new MathContext(4));
+    		   finall = bd3.doubleValue();
+    		   
+    		   newText.setText("\n\n\n Your Total is: $"+ finall + "\n Please choose a payment method from below:");
+   
+     	   }
+        });
+        
+       twe.addActionListener(new ActionListener() {
+     	   
+     	   public void actionPerformed(ActionEvent e) {
+     		  
+     		   
+     		  totall = 0.20 * total + final1;
+    		   
+    		   
+    		   BigDecimal bd3 = new BigDecimal(totall);
+    		   bd3 = bd3.round(new MathContext(4));
+    		   finall = bd3.doubleValue();
+    		   
+    		   newText.setText( "\n\n\n Your Total is: $"+ finall + "\n Please choose a payment method from below:");
+   
+     	   }
+        });
+        
+       
+		entercustom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+				
+				double tips = Double.parseDouble(customtip.getText());
+				
+				if(tips >= 0) {
+				
+				totall = tips + final1;
+	    		   
+	    		   
+	    		   BigDecimal bd3 = new BigDecimal(totall);
+	    		   bd3 = bd3.round(new MathContext(4));
+	    		   finall = bd3.doubleValue();
+	    		   
+	    		  
+				newText.setText( "\n\n\n Your Total is: $"+ finall + "\n Please choose a payment method from below:");
+				}
+				
+				else {
+					
+					newText.setText("\n\n\n Please enter a valid amount of tip.");
+					
+				}
+				}
+				catch(Exception e1) {
+					
+					newText.setText("\n\n\n Please enter a valid amount of tip.");
+				}
+			}
+		});
+       
+   
+        
+        
+		cash.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ChangePanel change = new ChangePanel();
+				change.pack();
+				change.setVisible(true);
+			}
+		});
         
         card.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		
-        	TextField.setText(TextField.getText() + "\n\n\n\nThank you for stopping by! See you again soon!");
+  
+        	newText.setText(TextField.getText() + "\n\n\n\nThank you for stopping by! See you again soon!");
         	}
        
         });
