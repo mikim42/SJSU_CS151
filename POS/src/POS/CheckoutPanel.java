@@ -43,7 +43,7 @@ public class CheckoutPanel extends JFrame{
 		
 		tipsPanel = new JPanel();
 		tipsPanel.setPreferredSize(new Dimension(500,40));
-		JLabel enter = new JLabel("Enter tips: ");
+		JLabel enter = new JLabel("Enter tip: ");
 		JButton fif = new JButton("15%");
 		JButton eig = new JButton("18%");
 		JButton twe = new JButton("20%");
@@ -82,7 +82,7 @@ public class CheckoutPanel extends JFrame{
 
 		TextField.setBounds(5, 5, 10, 20);
         TextField.setBackground(new Color(102,171,205));
-        TextField.setText(TextField.getText() + "\n \n \n \n \n  Please Choose Tips amount below: \n\n\n");
+        TextField.setText(TextField.getText() + "\n \n \n \n \n  Please Choose Tip amount below: \n\n\n");
         TextField.setEditable(false);
         
         JButton cash = new JButton("Cash");
@@ -196,7 +196,9 @@ public class CheckoutPanel extends JFrame{
         card.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
   
-        	newText.setText(TextField.getText() + "\n\n\n\nThank you for stopping by! See you again soon!");
+        		CreditPanel credit = new CreditPanel();
+				credit.pack();
+				credit.setVisible(true);
         	}
        
         });
