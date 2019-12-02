@@ -29,8 +29,13 @@ public class EditAddedItemFrame extends JFrame{
 		qpanel.setPreferredSize(new Dimension(100,50));
 		notepanel.setPreferredSize(new Dimension(400,200));
 		buttonPanel.setPreferredSize(new Dimension(100,50));
+<<<<<<< HEAD
 		qpanel.setBackground(Color.WHITE);
 		notepanel.setBackground(Color.lightGray);
+=======
+		qpanel.setBackground(Color.decode("#ffe8bb"));
+		notepanel.setBackground(Color.LIGHT_GRAY);
+>>>>>>> 09255c22b9c33c9edab73aa4e53c639ac2f4c9e0
 		buttonPanel.setBackground(Color.WHITE);
 		panel.setLayout(new BorderLayout());
 		
@@ -140,6 +145,17 @@ public class EditAddedItemFrame extends JFrame{
 			}
 			
 		});
+		
+		cancel.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e) {
+						
+						p.dispose();
+					}
+					
+				}
+				);
+		
 		
 		qpanel.add(qDecrease);
 		qpanel.add(quantity);

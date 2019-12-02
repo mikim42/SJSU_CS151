@@ -47,7 +47,9 @@ public class SideStatusCanvas extends JPanel{
 		});
 		
 	}
+	
 	public void addItem() {
+		
 		SideStatusCanvas s = this;
 		if (cart.getItems().size()!=0){
 		Dimension buttonSize = new Dimension(300,70);

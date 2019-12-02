@@ -16,9 +16,9 @@ public class CheckoutPanel extends JFrame{
 	private JTextArea TextField;
 	Dimension menuButtonSize = new Dimension(90, 35);
 	private JTextArea newText;
-	private double totall;
-	private double finall;
-	
+	private static double totall;
+	private static double finall;
+	private double total;
 	
 	public CheckoutPanel() {
 		
@@ -36,14 +36,17 @@ public class CheckoutPanel extends JFrame{
 	
 	private void getCheckoutPanel() {
 		
+		
+		
 		CheckoutPanel currWindow = this;
 		toolbarPanel = new JPanel();
 		toolbarPanel.setPreferredSize(new Dimension(500,40));
+		toolbarPanel.setBackground(Color.gray);
 		currWindow.setLocation(100,100);
 		
 		tipsPanel = new JPanel();
 		tipsPanel.setPreferredSize(new Dimension(500,40));
-		JLabel enter = new JLabel("Enter tips: ");
+		JLabel enter = new JLabel("Enter tip: ");
 		JButton fif = new JButton("15%");
 		JButton eig = new JButton("18%");
 		JButton twe = new JButton("20%");
@@ -65,7 +68,7 @@ public class CheckoutPanel extends JFrame{
 		
 		
 		
-		double total = SideStatusCanvas.getTotal();
+		total = SideStatusCanvas.getTotal();
 		
 		double tax1 = total * 0.08;
 		BigDecimal bd = new BigDecimal(tax1);
@@ -82,7 +85,7 @@ public class CheckoutPanel extends JFrame{
 
 		TextField.setBounds(5, 5, 10, 20);
         TextField.setBackground(new Color(102,171,205));
-        TextField.setText(TextField.getText() + "\n \n \n \n \n  Please Choose Tips amount below: \n\n\n");
+        TextField.setText(TextField.getText() + "\n \n \n \n \n  Please Choose Tip amount below: \n\n\n");
         TextField.setEditable(false);
         
         JButton cash = new JButton("Cash");
@@ -196,17 +199,12 @@ public class CheckoutPanel extends JFrame{
         card.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
   
-        	newText.setText(TextField.getText() + "\n\n\n\nThank you for stopping by! See you again soon!");
+        		CreditPanel credit = new CreditPanel();
+				credit.pack();
+				credit.setVisible(true);
         	}
        
         });
-       /* bitcoin.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		
-        	TextField.setText(TextField.getText() + "\n\n\n\nThank you for stopping by! See you again soon!");
-        	}
-       
-        });  */
         
            close.addActionListener(new ActionListener() {
         	   
@@ -217,5 +215,12 @@ public class CheckoutPanel extends JFrame{
            });
         
 		
+	}
+	
+	public static double getTotal() {
+		
+		return finall;
+		
+	
 	}
 }
