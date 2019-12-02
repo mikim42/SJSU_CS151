@@ -92,27 +92,25 @@ public class ChangePanel extends JFrame {
 	        	
 
 	        		try {
+	        			
 	        	    double value1 = Double.parseDouble(amount.getText());
 	        	    BigDecimal bd = new BigDecimal(value1);
 	        		bd = bd.round(new MathContext(4));
 	        		double value = bd.doubleValue();
 	        		
-	        	    double tot1 = SideStatusCanvas.getTotal();
-	        	    
+	        	    double tot1 = CheckoutPanel.getTotal(); 
 	        	    BigDecimal bdt = new BigDecimal(tot1);
 	        		bdt = bdt.round(new MathContext(4));
 	        	    double tot = bdt.doubleValue();
-	        		
-	        	    
-	        	    System.out.println(value);
+
 	        	    if(value >= tot) {
 	        	    	
-	        	    	msg = "Your change is $" + (value - tot )+".";
+	        	    	msg = "Your change is $" + (double) (value - tot )+".";
 	        	    }
 	        	    
 	        	    else if(value >= 0) {
 	        	    	
-	        	    	msg = "You are missing $" + (tot - value)+".";
+	        	    	msg = "You are missing $" + (double) (tot - value)+".";
 	        	    }
 	        	    
 	        	    else {

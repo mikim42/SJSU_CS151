@@ -16,9 +16,9 @@ public class CheckoutPanel extends JFrame{
 	private JTextArea TextField;
 	Dimension menuButtonSize = new Dimension(90, 35);
 	private JTextArea newText;
-	private double totall;
-	private double finall;
-	
+	private static double totall;
+	private static double finall;
+	private double total;
 	
 	public CheckoutPanel() {
 		
@@ -36,9 +36,12 @@ public class CheckoutPanel extends JFrame{
 	
 	private void getCheckoutPanel() {
 		
+		
+		
 		CheckoutPanel currWindow = this;
 		toolbarPanel = new JPanel();
 		toolbarPanel.setPreferredSize(new Dimension(500,40));
+		toolbarPanel.setBackground(Color.gray);
 		currWindow.setLocation(100,100);
 		
 		tipsPanel = new JPanel();
@@ -65,7 +68,7 @@ public class CheckoutPanel extends JFrame{
 		
 		
 		
-		double total = SideStatusCanvas.getTotal();
+		total = SideStatusCanvas.getTotal();
 		
 		double tax1 = total * 0.08;
 		BigDecimal bd = new BigDecimal(tax1);
@@ -202,13 +205,6 @@ public class CheckoutPanel extends JFrame{
         	}
        
         });
-       /* bitcoin.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		
-        	TextField.setText(TextField.getText() + "\n\n\n\nThank you for stopping by! See you again soon!");
-        	}
-       
-        });  */
         
            close.addActionListener(new ActionListener() {
         	   
@@ -219,5 +215,12 @@ public class CheckoutPanel extends JFrame{
            });
         
 		
+	}
+	
+	public static double getTotal() {
+		
+		return finall;
+		
+	
 	}
 }
