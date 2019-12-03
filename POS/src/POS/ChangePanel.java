@@ -19,6 +19,7 @@ public class ChangePanel extends JFrame {
 	private JPanel messagePanel;
 	private JTextArea message;
 	private String msg;
+	private double finaltot;
 	
 	Dimension menuButtonSize = new Dimension(90, 35);
 	
@@ -105,31 +106,50 @@ public class ChangePanel extends JFrame {
 
 	        	    if(value >= tot) {
 	        	    	
-	        	    	msg = "Your change is $" + (double) (value - tot )+".";
+	        	    	 finaltot = value - tot;
+	        	    	
+	        	    	 BigDecimal bdtot = new BigDecimal(finaltot);
+	 	        		bdtot = bdtot.round(new MathContext(4));
+	 	        	    finaltot = bdtot.doubleValue();
+	 	        		
+	 	        		msg = "Your change is $" + finaltot+".";
+	 	        		message.setText(msg);
+	 	        	
+	        	    	
+	        	    	
 	        	    }
 	        	    
-	        	    else if(value >= 0) {
+	        	    else if(value < tot)
+	        	    {
+	        	    	finaltot = tot - value;
 	        	    	
-	        	    	msg = "You are missing $" + (double) (tot - value)+".";
+	        	    	 BigDecimal bdtot = new BigDecimal(finaltot);
+	 	        		bdtot = bdtot.round(new MathContext(4));
+	 	        	    finaltot = bdtot.doubleValue();
+	 	        		
+	 	        		msg = "Your change is $" + finaltot+".";
+	 	        		message.setText(msg);
+	 	        	
 	        	    }
+	        	   
 	        	    
 	        	    else {
 	        	    	
 	        	    	msg = "Please enter a valid amount.";
 	        	    }
+	        		
 	        		}
 	        		catch(Exception e1) {
 	        			
 	        			msg = "Please enter a valid amount.";
 	        			
 	        		}
-	        		
-	        		message.setText(msg);
-	        	
 	        	
 	        	}
-	       
-	        });
+	   
+	       });
+		
+		
 		 
 		 exit.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
@@ -138,11 +158,11 @@ public class ChangePanel extends JFrame {
 	        	
 	        	}
 	       
-	        });
+	    });
 		
 		
+	}	
 		
-		
-	}
-	
 }
+
+
