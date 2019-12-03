@@ -24,7 +24,6 @@ public class CreditPanel extends JFrame{
 	
 	public CreditPanel() {
 		
-
 		enterPanel = new JPanel();
 		toolsPanel = new JPanel();
 		instruction = new JPanel();

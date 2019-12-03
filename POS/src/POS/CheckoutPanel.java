@@ -200,7 +200,7 @@ public class CheckoutPanel extends JFrame{
         	public void actionPerformed(ActionEvent e) {
   
         		CreditPanel credit = new CreditPanel();
-				credit.pack();
+        		credit.pack();
 				credit.setVisible(true);
         	}
        
