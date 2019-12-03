@@ -102,7 +102,7 @@ public class MenuItems implements Iterable<Item> {
 					menuCanvas.getMenuPanel().repaint();
 				}
 			});
-			menuCanvas.getMenuPanel().repaint();
 		}
+		menuCanvas.getMenuPanel().repaint();
 	}
 }
