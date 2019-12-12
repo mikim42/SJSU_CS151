@@ -106,7 +106,8 @@ public class ChangePanel extends JFrame {
 
 	        	    if(value >= tot) {
 	        	    	
-	        	    	 finaltot = value - tot;
+	        	    	
+	        	    	finaltot = value - tot;
 	        	    	
 	        	    	 BigDecimal bdtot = new BigDecimal(finaltot);
 	 	        		bdtot = bdtot.round(new MathContext(4));
@@ -121,13 +122,14 @@ public class ChangePanel extends JFrame {
 	        	    
 	        	    else if(value < tot)
 	        	    {
+	        	    	System.out.println(value);
 	        	    	finaltot = tot - value;
 	        	    	
 	        	    	 BigDecimal bdtot = new BigDecimal(finaltot);
 	 	        		bdtot = bdtot.round(new MathContext(4));
 	 	        	    finaltot = bdtot.doubleValue();
 	 	        		
-	 	        		msg = "Your change is $" + finaltot+".";
+	 	        		msg = "You are missing $" + finaltot+".";
 	 	        		message.setText(msg);
 	 	        	
 	        	    }

@@ -4,11 +4,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class EditAddedItemFrame extends JFrame{
+	
 	private Item item;
 	private ShoppingCart cart;
 	private SideStatusCanvas s;
 	private JButton buttonChosen;
 	private JPanel cartPanel;
+	
+	
 	public EditAddedItemFrame(Item item, ShoppingCart cart, SideStatusCanvas s, JButton buttonChosen, JPanel cartPanel) {
 		this.item = item;
 		this.cart = cart;
@@ -112,11 +115,11 @@ public class EditAddedItemFrame extends JFrame{
 				JLabel price = new JLabel("$"+item.getQuantity()*item.getPrice());
 				JLabel note = new JLabel("<html>"+item.getNote().replaceAll("\n", "<br/>")+"</html>");
 				Font fontheader = new Font("Arial", Font.BOLD, 15);
-				Font fontprice = new Font("Consolas",1 , 12);
+				Font fontprice = new Font("Arial",1 , 12);
 				Font fontnote = new Font("Times", 1,10);
 				des.setFont(fontheader);
-				price.setFont(fontheader);
-				note.setFont(fontheader);
+				price.setFont(fontprice);
+				note.setFont(fontnote);
 				
 				
 				button.add(des, BorderLayout.NORTH);
@@ -144,13 +147,13 @@ public class EditAddedItemFrame extends JFrame{
 		});
 		
 		cancel.addActionListener(new ActionListener()
-				{
+		{
 					public void actionPerformed(ActionEvent e) {
 						
 						p.dispose();
 					}
 					
-				}
+					}
 				);
 		
 		

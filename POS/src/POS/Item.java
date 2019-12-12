@@ -12,13 +12,6 @@ public class Item implements Cloneable{
 		this.price = d;
 		id = 1 + Math.random();
 	}
-	/*public Item(String name, double price, int quantity, String note) {
-		this.name = name;
-		this.price = price;
-		this.quantity = quantity;
-		this.note = note;
-		
-	}*/
 	public void setNote(String note) {
 		this.note = note;
 	}

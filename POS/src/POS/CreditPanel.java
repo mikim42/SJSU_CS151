@@ -109,23 +109,13 @@ public class CreditPanel extends JFrame{
 		toolsPanel.add(enter);
 		toolsPanel.add(close);
         
-		enter.addActionListener( new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				
-				msg.setText("Thank you for stopping by!");
-			}
-
-		});
+		enter.addActionListener(event ->
+		msg.setText("Thank you for stopping by!")
+		);
 		
 		 
-		close.addActionListener( new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				
-				thiswin.dispose();
-			}
-
-			
-		});
+		close.addActionListener( event ->
+		thiswin.dispose());
 		
 	}
 

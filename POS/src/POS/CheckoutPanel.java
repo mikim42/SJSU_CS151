@@ -70,6 +70,7 @@ public class CheckoutPanel extends JFrame{
 		
 		total = SideStatusCanvas.getTotal();
 		
+		
 		double tax1 = total * 0.08;
 		BigDecimal bd = new BigDecimal(tax1);
 		bd = bd.round(new MathContext(4));
@@ -99,6 +100,11 @@ public class CheckoutPanel extends JFrame{
         toolbarPanel.add(cash);
         toolbarPanel.add(card);
         toolbarPanel.add(close);
+        
+		   
+        finall = finalwtax;
+        
+    
         
         fif.addActionListener(new ActionListener() {
      	   
@@ -190,6 +196,7 @@ public class CheckoutPanel extends JFrame{
         
 		cash.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 				ChangePanel change = new ChangePanel();
 				change.pack();
 				change.setVisible(true);
@@ -206,12 +213,10 @@ public class CheckoutPanel extends JFrame{
        
         });
         
-           close.addActionListener(new ActionListener() {
-        	   
-        	   public void actionPerformed(ActionEvent e) {
-        		   
+           close.addActionListener(event -> 
+           {
         		   currWindow.dispose();
-        	   }
+        	   
            });
         
 		

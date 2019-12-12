@@ -28,7 +28,9 @@ public class MenuCanvasEditor extends JFrame{
 		this.add(toolBarPanel, BorderLayout.SOUTH);
 		this.pack();
 		this.setVisible(true);
+	
 	}
+	
 	
 	private void getEditmenuPanel() {
 		MenuCanvasEditor currWindow = this;
@@ -118,8 +120,7 @@ public class MenuCanvasEditor extends JFrame{
 		});
 		menuListPanel.add(menuList);
 		
-		addButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		addButton.addActionListener(event -> {
 				String name = itemName.getText();
 				String price = itemPrice.getText();
 				
@@ -131,10 +132,11 @@ public class MenuCanvasEditor extends JFrame{
 				listModel.addElement(name);
 				items.updateDB();
 				menuList.repaint();
-			}
+			
 		});
-		delButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		
+		
+		delButton.addActionListener(event ->{
 				String selectedItem = (String)menuList.getSelectedValue();
 				if (selectedItem == null)
 					return ;
@@ -142,10 +144,13 @@ public class MenuCanvasEditor extends JFrame{
 				listModel.removeElement(selectedItem);
 				items.updateDB();
 				menuList.repaint();
-			}
+			
 		});
-		applyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		
+		
+		applyButton.addActionListener(event ->
+				{
+				
 				String selectedItem = (String)menuList.getSelectedValue();
 				if (selectedItem == null)
 					return ;
@@ -154,7 +159,7 @@ public class MenuCanvasEditor extends JFrame{
 					Double.parseDouble(itemPrice.getText()));
 				items.updateDB();
 				menuList.repaint();
-			}
-		});
+			
+				});
 	}
 }

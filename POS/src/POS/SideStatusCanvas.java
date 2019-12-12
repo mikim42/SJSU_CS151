@@ -2,6 +2,8 @@ package POS;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.ArrayList;
 
 import javax.accessibility.AccessibleContext;
@@ -101,7 +103,12 @@ public class SideStatusCanvas extends JPanel{
 			
 		}
 		System.out.println("-----------------------");
-		return  total;
+		
+		 BigDecimal bd3 = new BigDecimal(total);
+		   bd3 = bd3.round(new MathContext(4));
+		   double finalt = bd3.doubleValue();
+		   
+		return finalt;
 		
 	}
 }
