@@ -15,6 +15,7 @@ public class MenuCanvas extends JPanel{
 	private SideStatusCanvas sideStatusCanvas;
 	private ShoppingCart cart;
 	private MenuCanvas menuCanvas;
+
 	
 	public MenuCanvas(ShoppingCart cart) {
 		this.menuCanvas = this;
