@@ -90,55 +90,54 @@ public class ChangePanel extends JFrame {
 		 
 		enter.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
-	        	
-
+	        		
 	        		try {
 	        			
-	        	    double value1 = Double.parseDouble(amount.getText());
-	        	    BigDecimal bd = new BigDecimal(value1);
-	        		bd = bd.round(new MathContext(4));
-	        		double value = bd.doubleValue();
+	        			double value1 = Double.parseDouble(amount.getText());
+	        			BigDecimal bd = new BigDecimal(value1);
+	        			bd = bd.round(new MathContext(4));
+	        			double value = bd.doubleValue();
 	        		
-	        	    double tot1 = CheckoutPanel.getTotal(); 
-	        	    BigDecimal bdt = new BigDecimal(tot1);
-	        		bdt = bdt.round(new MathContext(4));
-	        	    double tot = bdt.doubleValue();
+	        			double tot1 = CheckoutPanel.getTotal(); 
+	        			BigDecimal bdt = new BigDecimal(tot1);
+	        			bdt = bdt.round(new MathContext(4));
+	        			double tot = bdt.doubleValue();
 
-	        	    if(value >= tot) {
+	        			if(value >= tot) {
 	        	    	
 	        	    	
-	        	    	finaltot = value - tot;
+	        				finaltot = value - tot;
 	        	    	
-	        	    	 BigDecimal bdtot = new BigDecimal(finaltot);
-	 	        		bdtot = bdtot.round(new MathContext(4));
-	 	        	    finaltot = bdtot.doubleValue();
+	        				BigDecimal bdtot = new BigDecimal(finaltot);
+	        				bdtot = bdtot.round(new MathContext(4));
+	        				finaltot = bdtot.doubleValue();
 	 	        		
-	 	        		msg = "Your change is $" + finaltot+".";
-	 	        		message.setText(msg);
+	        				msg = "Your change is $" + finaltot+".";
+	        				message.setText(msg);
 	 	        	
 	        	    	
 	        	    	
-	        	    }
+	        			}
 	        	    
-	        	    else if(value < tot)
-	        	    {
+	        			else if(value < tot)
+	        	    	{
 	        	    	System.out.println(value);
 	        	    	finaltot = tot - value;
 	        	    	
-	        	    	 BigDecimal bdtot = new BigDecimal(finaltot);
+	        	    	BigDecimal bdtot = new BigDecimal(finaltot);
 	 	        		bdtot = bdtot.round(new MathContext(4));
 	 	        	    finaltot = bdtot.doubleValue();
 	 	        		
 	 	        		msg = "You are missing $" + finaltot+".";
 	 	        		message.setText(msg);
 	 	        	
-	        	    }
+	        	    	}
 	        	   
 	        	    
-	        	    else {
+	        			else {
 	        	    	
 	        	    	msg = "Please enter a valid amount.";
-	        	    }
+	        			}
 	        		
 	        		}
 	        		catch(Exception e1) {

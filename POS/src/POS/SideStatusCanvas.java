@@ -53,33 +53,34 @@ public class SideStatusCanvas extends JPanel{
 	public void addItem() {
 		
 		SideStatusCanvas s = this;
+		
 		if (cart.getItems().size()!=0){
-		Dimension buttonSize = new Dimension(300,70);
+			Dimension buttonSize = new Dimension(300,70);
 
-		System.out.println(cart.getItems());
-		Item item = this.cart.getLastItem();
+			System.out.println(cart.getItems());
+			Item item = this.cart.getLastItem();
 		
-		JButton button = new JButton();
-		button.setLayout(new BorderLayout());
+			JButton button = new JButton();
+			button.setLayout(new BorderLayout());
 		
-		JLabel des = new JLabel(item.getQuantity()+"x   "+ item.getName());
-		JLabel price = new JLabel("$"+item.getQuantity()*item.getPrice());
-		JLabel note = new JLabel("<html>"+item.getNote().replaceAll("\n", "<br/>")+"</html>");
-		Font fontheader = new Font("Arial", Font.BOLD, 15);
-		Font fontprice = new Font("Arial",1 , 12);
-		Font fontnote = new Font("Times", 1,10);
-		des.setFont(fontheader);
-		price.setFont(fontprice);
-		note.setFont(fontnote);
+			JLabel des = new JLabel(item.getQuantity()+"x   "+ item.getName());
+			JLabel price = new JLabel("$"+item.getQuantity()*item.getPrice());
+			JLabel note = new JLabel("<html>"+item.getNote().replaceAll("\n", "<br/>")+"</html>");
+			Font fontheader = new Font("Arial", Font.BOLD, 15);
+			Font fontprice = new Font("Arial",1 , 12);
+			Font fontnote = new Font("Times", 1,10);
+			des.setFont(fontheader);
+			price.setFont(fontprice);
+			note.setFont(fontnote);
 		
 		
-		button.add(des, BorderLayout.NORTH);
-		button.add(price, BorderLayout.LINE_END);
-		button.add(note, BorderLayout.AFTER_LAST_LINE);
-//		button.setPreferredSize(buttonSize);
-		button.setMargin(new Insets(10,10,10,10));
-		button.setBackground(Color.white);
-		button.addActionListener(new ActionListener() {
+			button.add(des, BorderLayout.NORTH);
+			button.add(price, BorderLayout.LINE_END);
+			button.add(note, BorderLayout.AFTER_LAST_LINE);
+//			button.setPreferredSize(buttonSize);
+			button.setMargin(new Insets(10,10,10,10));
+			button.setBackground(Color.white);
+			button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				EditAddedItemFrame f = new EditAddedItemFrame(item, cart, s, button, cartPanel);
@@ -87,12 +88,12 @@ public class SideStatusCanvas extends JPanel{
 				f.setVisible(true);
 			}
 			
-		});
-		cartPanel.add(button);
-		this.revalidate();
-		this.repaint();
+			});
+			cartPanel.add(button);
+			this.revalidate();
+			this.repaint();
 		}
-		}
+	}
 	
 	public static double getTotal() {
 		total = 0;

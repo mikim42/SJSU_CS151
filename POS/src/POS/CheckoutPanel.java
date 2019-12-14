@@ -213,11 +213,10 @@ public class CheckoutPanel extends JFrame{
        
         });
         
-           close.addActionListener(event -> 
-           {
-        		   currWindow.dispose();
-        	   
-           });
+        close.addActionListener(event -> {
+        	currWindow.dispose();
+        });
+       
         
 		
 	}

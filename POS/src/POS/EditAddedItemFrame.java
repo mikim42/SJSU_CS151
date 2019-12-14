@@ -153,8 +153,8 @@ public class EditAddedItemFrame extends JFrame{
 						p.dispose();
 					}
 					
-					}
-				);
+					
+		});
 		
 		
 		qpanel.add(qDecrease);

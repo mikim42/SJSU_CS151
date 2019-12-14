@@ -107,7 +107,7 @@ public class MenuCanvasEditor extends JFrame{
 			listModel.addElement(it.next().getName());
 		}
 		JList menuList = new JList(listModel);
-		//
+	
 		menuList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				String selectedItem = (String)menuList.getSelectedValue();
@@ -120,7 +120,8 @@ public class MenuCanvasEditor extends JFrame{
 		});
 		menuListPanel.add(menuList);
 		
-		addButton.addActionListener(event -> {
+		addButton.addActionListener(event -> 
+		{
 				String name = itemName.getText();
 				String price = itemPrice.getText();
 				
@@ -136,7 +137,8 @@ public class MenuCanvasEditor extends JFrame{
 		});
 		
 		
-		delButton.addActionListener(event ->{
+		delButton.addActionListener(event ->
+		{
 				String selectedItem = (String)menuList.getSelectedValue();
 				if (selectedItem == null)
 					return ;
@@ -149,7 +151,7 @@ public class MenuCanvasEditor extends JFrame{
 		
 		
 		applyButton.addActionListener(event ->
-				{
+		{
 				
 				String selectedItem = (String)menuList.getSelectedValue();
 				if (selectedItem == null)
@@ -160,6 +162,6 @@ public class MenuCanvasEditor extends JFrame{
 				items.updateDB();
 				menuList.repaint();
 			
-				});
+		});
 	}
 }
